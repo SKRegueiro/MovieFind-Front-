@@ -1,0 +1,28 @@
+.jumbotron{
+    margin: 0%;
+    background-color: #2B2D42;
+    color: #ffffff;
+}
+
+.navbar{
+    background-color: #54566d;
+}
+
+#buscador{
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    width: 60%;
+    margin-left: 18% ;
+    margin-right: 5px;
+    }
+
+#buscador::placeholder{
+    color: #2B2D42;
+}
+
+.btn{
+    color: #2B2D42;
+    background-color: #EEC643;
+}
+
