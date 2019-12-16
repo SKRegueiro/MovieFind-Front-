@@ -1,23 +1,34 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-1 text-center ">MovieFind</h1>
+    <h1 class="display-1 text-center" (click)="volverInicio()">MovieFind</h1>
     <p class="lead text-center mt-3"> ¡Descubre en qué plataforma se encuentra la película que quieres ver!
     </p>
   </div>
 </div>
+<div class="navbar">
+  <form [formGroup]="formulario" class="col-12" (ngSubmit)="onSubmit(formulario.value)">
+    <div class="row ">
+      <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+        placeHolder="Search title" #auto>
+      </ng-autocomplete>
 
-<div class=" navbar">
-  <div class="row col-12">
-    <input class="form-control " id="buscador" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn " type="submit">Search</button>
-  </div>
+      <ng-template class="container" #itemTemplate let-item>
+        <img class="poster" [src]="item.poster" alt="">
+        <p [innerHtml]="item.title"></p>
+      </ng-template>
+
+      <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+      </ng-template>
+      <button class="btn d-flex" type="button" type="submit"> Search</button>
+    </div>
+  </form>
 </div>
-
-<div class=" navbar">
-  <div class="row col-12">
-    <input class="form-control " id="buscador" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn " type="submit">Search</button>
+<div>
+  <div class=" navbar">
+    <div class="row col-12">
+    </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
