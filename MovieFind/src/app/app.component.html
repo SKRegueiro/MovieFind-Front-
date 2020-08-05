@@ -1,34 +1,45 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-1 text-center" (click)="volverInicio()">MovieFind</h1>
+<!-- <div class="jumbotron jumbotron-fluid">
+  <div class="container" (click)="volverInicio()">
+    <h1 class="display-1 text-center">MovieFind</h1>
     <p class="lead text-center mt-3"> ¡Descubre en qué plataforma se encuentra la película que quieres ver!
     </p>
   </div>
-</div>
-<div class="navbar">
-  <form [formGroup]="formulario" class="col-12" (ngSubmit)="onSubmit(formulario.value)">
-    <div class="row ">
-      <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+</div> -->
+<div class="row">
+  <div class="navbar col-12">
+    <a class="navbar-brand p-2 ml-2 mb-2" (click)="volverInicio()">MovieFind</a>
+    <div class="ng-autocomplete col-7 d-flex justify-content-end mr-2 mb-1 ">
+      <ng-autocomplete class="formulario" [data]=" data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
         (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
-        placeHolder="Search title" #auto>
+        placeHolder="Search title..." #auto>
       </ng-autocomplete>
-
-      <ng-template class="container" #itemTemplate let-item>
-        <img class="poster" [src]="item.poster" alt="">
-        <p [innerHtml]="item.title"></p>
-      </ng-template>
-
-      <ng-template #notFoundTemplate let-notFound>
-        <div [innerHTML]="notFound"></div>
-      </ng-template>
-      <button class="btn d-flex" type="button" type="submit"> Search</button>
     </div>
-  </form>
+    <ng-template class="" #itemTemplate let-item>
+      <div class="container">
+        <div class="card m-2">
+          <div class="row ">
+            <div class="col-3">
+              <img class="card-img poster" [src]="item.poster" alt="">
+            </div>
+            <div class="card-body col-8">
+              <h5 class="card-title" [innerHtml]="item.title"></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
 </div>
-<div>
-  <div class=" navbar">
-    <div class="row col-12">
+<div class="table-responsive">
+  <div class="navbar col-12">
+    <div class="row justify-content-center providers" *ngFor="let provider of this?.providers">
+      <img [src]="provider['icon_url']" class="icon">
     </div>
   </div>
-  <router-outlet></router-outlet>
 </div>
+
+<router-outlet></router-outlet>

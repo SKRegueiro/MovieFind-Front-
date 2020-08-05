@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PeliculasService } from './models/peliculas.service';
 import { Router } from '@angular/router';
+import { ProvidersService } from './models/providers.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,14 @@ export class AppComponent {
   keyword = 'title';
   formulario: FormGroup;
   data: any[];
+  providers: any[]
 
-  constructor(private pelicula: PeliculasService, private router: Router) {
+  constructor(private pelicula: PeliculasService, private providerService: ProvidersService, private router: Router) {
     this.formulario = new FormGroup({
       pelicula: new FormControl(''),
     });
     this.data = []
+    this.providers = []
   }
 
   onSubmit(value) {
@@ -30,6 +33,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.providerService.getProviders().then(result => {
+      result.forEach(element => {
+        this.providers.push(element)
+        console.log(element['icon_url'])
+      });
+    })
+    console.log(this.providers)
   }
 
   mostrarPelicula(peliculaId) {
@@ -40,11 +50,6 @@ export class AppComponent {
     this.router.navigate(['/catalogo']);
   }
 
-  onFocused(e) {
-    23
-
-  }
-
   onChangeSearch(event) {
     this.pelicula.autcomple(event)
       .then(result => {
@@ -52,6 +57,13 @@ export class AppComponent {
       })
       .catch(err => console.log(err));
   }
+
+  //hay que pasarle el resultado a catalogo
+  // loadProviderCatalog(event){
+  //   this.pelicula.getMoviesByProvider(id).then(result => {
+  //     this.data = 
+  //   })
+  // }
 
   saveAutocompleteData(result) {
     let informacion = [];

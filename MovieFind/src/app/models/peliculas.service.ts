@@ -17,6 +17,14 @@ export class PeliculasService {
     return this.http.get<any[]>(this.baseUrl).toPromise();
   }
 
+  getMoviesByProvider(id): Promise<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/moviesByProvider`, { id: id }).toPromise();
+  }
+
+  getMoreMovies(from, to): Promise<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/moreMovies`, { from: from, to: to }).toPromise();
+  }
+
   getPelicula(title): Promise<any[]> {
     return this.http.post<any[]>(`${this.baseUrl}/buscarTitle`, title).toPromise();
   }
@@ -31,5 +39,9 @@ export class PeliculasService {
 
   autcomple(search): Promise<any[]> {
     return this.http.post<any[]>(`${this.baseUrl}/autocomplete`, { search: search }).toPromise();
+  }
+
+  getReleatedMovies(genreIds): Promise<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/releatedmovies`, { genreIds: genreIds }).toPromise();
   }
 }

@@ -1,1 +1,112 @@
-<p>pelicula works!</p>
+<div class="justify-content-center colorFondo">
+    <img [src]="this?.backdrops[this.posicion]" class="img-fluid w-100 fondo" alt="">
+    <div class="colorFondo"></div>
+    <div class="row">
+        <!-- justify-content-around -->
+        <div class="card flotar mr-3 col-11 ml-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <img class="card-img img-fluid mt-4" [src]="movie.poster">
+                        <div class="row">
+                        </div>
+                    </div>
+                    <div class="card-body col-12 col-md-8">
+                        <div class="informacion">
+                            <div class="container">
+                                <h1 class="h2 font-weight-bold">{{movie.title}}</h1>
+                                <div class="container">
+                                    <div class="row">
+                                        <h1 *ngFor="let score of scoring">
+                                            <p class="badge mr-1" *ngIf="score['provider_type'] == 'imdb:score'"> IMDB:
+                                                {{score['value']}}
+                                            </p>
+                                            <p class="badge" *ngIf="score['provider_type'] == 'tomato:meter'"> Rotten
+                                                Tommatoes:
+                                                {{score['value']}}</p>
+                                        </h1>
+                                        <label class="badge mr-1 " *ngIf="movie.runtime">{{movie.runtime}} min</label>
+                                        <label class="badge mr-1"
+                                            *ngIf="movie.age_certification">{{movie.age_certification}}+</label>
+                                        <div>
+                                            <label class="badge"
+                                                *ngFor="let genre of this.genresArray">{{genre}}</label>
+                                        </div>
+                                        <label class="badge mr-1" for="">{{movie.original_release_year}} </label>
+                                        <p class="font-weight-light ">{{movie.short_description}}</p>
+
+                                    </div>
+                                </div>
+
+                                <div id="tabla" class="table col-12 col-md-12 bordeTabla mt-3">
+                                    <header class="h6 m-1">
+                                        Dónde ver
+                                    </header>
+
+                                    <div class="table-responsive ">
+                                        <table>
+                                            <td *ngFor="let provider of offers">
+                                                <div class="row">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <a [href]="provider['urls']['standard_web']"
+                                                                target="_blank"><img class="icon"
+                                                                    [src]="getProviderLogo(provider['provider_id'])">
+                                                                <span
+                                                                    class="badge">{{provider['presentation_type']}}</span>
+                                                            </a>
+                                                            <p *ngIf="provider['monetization_type'] == 'buy'"
+                                                                class="m-1">
+                                                                Comprar
+                                                                {{provider['retail_price']}}€
+
+                                                            </p>
+                                                            <p *ngIf="provider['monetization_type'] == 'rent'"
+                                                                class="m-1">
+                                                                Alquilar
+                                                                {{provider['retail_price']}}€
+
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                            <h1 class="lead mt-3 ml-1" *ngIf="this.offers == null">
+                                                No hemos podido encontrar ninguna oferta :(
+                                            </h1>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- info temporadas -->
+                <!-- <div>
+                    <ul class="row d-flex justify-content-center">
+                        <li *ngFor="let season of this?.seasons">
+                            <div class="container">
+                                <img [src]="'https://images.justwatch.com' + season['poster']" class="card-img-top"
+                                    alt="">
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="table-responsive  bordeTabla mt-3 ">
+                    <table class="tabla justify-content-around">
+                        <td *ngFor="let movie of this?.peliculasRecomendadas" class="p-3">
+                            <img class="card-img-top " [src]=" movie?.poster" (click)="mostrarPelicula(movie.id)"
+                                [alt]="movie.title">
+                        </td>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,11 +1,28 @@
+.autocomplete-container .input-container input {
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+    outline: 0;
+    background-color: #fff;
+    color: rgba(0,0,0,.87);
+    width: 100%;
+    padding: 0 15px;
+    line-height: 40px;
+    height: 35px;
+}
 .jumbotron{
     margin: 0%;
-    background-color: #2B2D42;
+    background-color: #333;
     color: #ffffff;
 }
 
+.display-1{
+    font-weight: bold;
+}
+
 .navbar{
-    background-color: #54566d;
+    background-color: #333;
+    height: 60px;
 }
 
 #buscador{
@@ -25,4 +42,55 @@
     color: #2B2D42;
     background-color: #EEC643;
 }
+.poster{
+    height: 10rem;
+    width: 8rem;
+}
 
+.icon{
+    height: 2.7rem;
+    width: 2.7rem;
+    border-radius: 0.25rem;
+    padding: 1px;
+    cursor: pointer;
+}
+
+
+
+.formulario{
+    border-radius: 0.25rem;
+    margin-right: 0em;
+}
+.input-container{
+    border-radius: 0.25rem;
+    margin-right: 0em;  
+}
+
+.autocomplete-container{
+    border-radius: 0.25rem;
+    margin-right: 0em;  
+}
+
+.ng-autocomplete{
+    width: 600px;
+    border-radius: 0.25px;
+}
+
+
+.container{
+    cursor: pointer;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    cursor: pointer;   
+}
+
+.navbar-brand[_ngcontent-gbk-c0] {
+    color: #fbfbfd;
+}
+
+a:not([href]):not([tabindex]) {
+    color:  #fbfbfd;
+    text-decoration: none;
+}
