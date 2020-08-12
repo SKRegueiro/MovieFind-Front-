@@ -36,10 +36,10 @@ export class AppComponent {
     this.providerService.getProviders().then(result => {
       result.forEach(element => {
         this.providers.push(element)
-        console.log(element['icon_url'])
+
       });
     })
-    console.log(this.providers)
+
   }
 
   mostrarPelicula(peliculaId) {

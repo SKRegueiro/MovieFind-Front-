@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../models/peliculas.service';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-catalogo',
