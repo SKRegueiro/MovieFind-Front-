@@ -1,7 +1,6 @@
-.autocomplete-container .input-container input {
+/deep/ .autocomplete-container .input-container input {
     font-size: 14px;
     box-sizing: border-box;
-    border-radius: 0.25em;
     outline: 0;
     background-color: #fff;
     color: rgba(0,0,0,.87);
@@ -9,6 +8,7 @@
     padding: 0 15px;
     line-height: 40px;
     height: 35px;
+    border-radius: 3px; 
 }
 .jumbotron{
     margin: 0%;
