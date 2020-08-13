@@ -10,7 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./pelicula.component.css']
 })
 export class PeliculaComponent implements OnInit {
-  movie: {};
+  movie: {
+    'runtime': "",
+    'age_certification': '',
+    'poster': '',
+    'title': '',
+    'original_release_year': '',
+    'short_description': ''
+  };
   scoring: {};
   cast: {};
   offers: {};

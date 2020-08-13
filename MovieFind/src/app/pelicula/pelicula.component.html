@@ -7,14 +7,14 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-3">
-                        <img class="card-img img-fluid mt-4" [src]="movie.poster">
+                        <img class="card-img img-fluid mt-4" [src]="movie?.poster">
                         <div class="row">
                         </div>
                     </div>
                     <div class="card-body col-12 col-md-8">
                         <div class="informacion">
                             <div class="container">
-                                <h1 class="h2 font-weight-bold">{{movie.title}}</h1>
+                                <h1 class="h2 font-weight-bold">{{movie?.title}}</h1>
                                 <div class="container">
                                     <div class="row">
                                         <h1 *ngFor="let score of scoring">
@@ -25,15 +25,15 @@
                                                 Tommatoes:
                                                 {{score['value']}}</p>
                                         </h1>
-                                        <label class="badge mr-1 " *ngIf="movie.runtime">{{movie.runtime}} min</label>
+                                        <label class="badge mr-1 " *ngIf="movie?.runtime">{{movie.runtime}} min</label>
                                         <label class="badge mr-1"
-                                            *ngIf="movie.age_certification">{{movie.age_certification}}+</label>
+                                            *ngIf="movie?.age_certification">{{movie?.age_certification}}+</label>
                                         <div>
                                             <label class="badge"
                                                 *ngFor="let genre of this.genresArray">{{genre}}</label>
                                         </div>
-                                        <label class="badge mr-1" for="">{{movie.original_release_year}} </label>
-                                        <p class="font-weight-light ">{{movie.short_description}}</p>
+                                        <label class="badge mr-1" for="">{{movie?.original_release_year}} </label>
+                                        <p class="font-weight-light ">{{movie?.short_description}}</p>
 
                                     </div>
                                 </div>
@@ -99,8 +99,8 @@
                 <div class="table-responsive  bordeTabla mt-3 ">
                     <table class="tabla justify-content-around">
                         <td *ngFor="let movie of this?.peliculasRecomendadas" class="p-3">
-                            <img class="card-img-top " [src]=" movie?.poster" (click)="mostrarPelicula(movie.id)"
-                                [alt]="movie.title">
+                            <img class="card-img-top " [src]=" movie?.poster" (click)="mostrarPelicula(movie?.id)"
+                                [alt]="movie?.title">
                         </td>
                     </table>
                 </div>

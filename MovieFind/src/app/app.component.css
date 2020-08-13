@@ -66,6 +66,7 @@
 .input-container{
     border-radius: 0.25rem;
     margin-right: 0em;  
+    
 }
 
 .autocomplete-container{
@@ -81,6 +82,7 @@
 
 .container{
     cursor: pointer;
+
 }
 
 .navbar-brand{
