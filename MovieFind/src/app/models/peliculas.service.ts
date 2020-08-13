@@ -10,7 +10,7 @@ export class PeliculasService {
   arrayPeliculas: any[];
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'https://moviefind-app.herokuapp.com';
   }
 
   getAll(): Promise<any[]> {
