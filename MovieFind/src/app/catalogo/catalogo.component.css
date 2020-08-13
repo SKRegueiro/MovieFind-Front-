@@ -11,10 +11,6 @@ transition: 300ms;
 width: auto;
 }
 
-.row{
-display: flex;
-}
-
 .body{
     padding: 0em 0em;
     margin: 0em 0em;
@@ -27,6 +23,7 @@ display: flex;
 .card{
     overflow: hidden;
     border: 0ch;
+    margin: 4px 4px;
 }
 
 

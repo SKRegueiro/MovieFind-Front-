@@ -1,11 +1,11 @@
 <div class="container d-flex mt-2">
     <div class="search-results" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
         (scrolled)="onScroll()">
-        <div class="card-deck flex-fill justify-content-center">
-            <div class="row p-1" *ngFor="let movie of this?.lastMovies">
-                <div class="card">
-                    <img *ngIf="movie.poster != null" [src]="movie.poster" class="card-img-top"
-                        (click)="mostrarPelicula(movie.id)" [alt]="movie.title">
+        <div class="card-deck row  justify-content-center flex-wrap">
+            <div class=" " *ngFor="let movie of this?.lastMovies">
+                <div class="card" *ngIf="movie.poster != null">
+                    <img [src]="movie.poster" class="card-img-top" (click)="mostrarPelicula(movie.id)"
+                        [alt]="movie.title">
                 </div>
             </div>
         </div>
