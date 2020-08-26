@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PeliculasService } from './models/peliculas.service';
 import { Router } from '@angular/router';
 import { ProvidersService } from './models/providers.service';
+
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,10 @@ export class AppComponent {
   keyword = 'title';
   formulario: FormGroup;
   data: any[];
-  providers: any[]
+  providers: any[];
+  scrolled: boolean = false;
 
-  constructor(private pelicula: PeliculasService, private providerService: ProvidersService, private router: Router) {
+  constructor(private pelicula: PeliculasService, private providerService: ProvidersService, private router: Router, private changeDetector: ChangeDetectorRef) {
     this.formulario = new FormGroup({
       pelicula: new FormControl(''),
     });
@@ -25,22 +27,26 @@ export class AppComponent {
     this.providers = []
   }
 
-  onSubmit(value) {
-    this.pelicula.getPelicula(value)
-      .then(result => {
-        this.mostrarPelicula(result[0]['id']);
-      }).catch(err => console.log(err));
-  }
-
   ngOnInit() {
     this.providerService.getProviders().then(result => {
       result.forEach(element => {
         this.providers.push(element)
-
       });
     })
-
+    window.addEventListener('scroll', this.scroll, true);
   }
+
+  ngOnDestroy() {
+    window.removeEventListener('scroll', this.scroll, true);
+  }
+
+  scroll = () => {
+    if (window.scrollY > 80) {
+      this.scrolled = true
+      this.changeDetector.detectChanges
+    } else this.scrolled = false;
+
+  };
 
   mostrarPelicula(peliculaId) {
     this.router.navigate([`/pelicula/${peliculaId}`]);
@@ -65,6 +71,7 @@ export class AppComponent {
   //   })
   // }
 
+
   saveAutocompleteData(result) {
     let informacion = [];
     for (let i = 0; i < result.length; i++) {
@@ -79,7 +86,6 @@ export class AppComponent {
     }
     return informacion;
   }
-
 
   selectEvent(event) {
     this.mostrarPelicula(event['id']);

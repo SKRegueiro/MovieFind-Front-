@@ -17,7 +17,7 @@ background-color: transparent;
 
 .flotar{
     box-shadow:0 5px 10px rgba(0,0,0.63,0.63);
-    z-index: 1000;
+    /* z-index: 1000; */
     position: relative;
 }
 
@@ -51,7 +51,7 @@ background-color: transparent;
 }
 
 
-.card{
+.card{  
 border: 0em;
 }
 
@@ -85,4 +85,28 @@ header{
     letter-spacing: .024em;
     font-family: "SF Pro Display","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+/* Mobile  */
+@media screen and (max-width: 850px) {
 
+
+.ml-5, .mx-5 {
+    margin-left: 0rem!important;
+}
+
+.mr-3, .mx-3 {
+    margin-right: 0rem !important;
+}
+
+.fondo{
+    display: none;
+}
+
+
+.col-11{
+    flex: 100%;
+    max-width: 100%;
+}
+
+
+
+}

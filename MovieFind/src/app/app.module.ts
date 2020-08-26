@@ -9,12 +9,14 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatalogoComponent,
     PeliculaComponent,
+    SearchBarComponent,
 
   ],
   imports: [

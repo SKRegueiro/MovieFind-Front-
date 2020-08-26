@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../models/peliculas.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-catalogo',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class CatalogoComponent implements OnInit {
   lastMovies: any[];
 
-  constructor(private pelicula: PeliculasService, private router: Router) { }
+  constructor(private pelicula: PeliculasService, private router: Router, private location: Location) { }
 
   ngOnInit() {
     this.getLastMovies();
@@ -23,6 +24,7 @@ export class CatalogoComponent implements OnInit {
   }
   mostrarPelicula(peliculaId) {
     this.router.navigate([`/pelicula/${peliculaId}`]);
+
   }
 
   onScroll() {

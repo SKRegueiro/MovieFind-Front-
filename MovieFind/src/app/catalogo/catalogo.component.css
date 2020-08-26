@@ -15,11 +15,7 @@ width: auto;
     padding: 0em 0em;
     margin: 0em 0em;
 }
-.card-deck{
-    width: 100%;
-    margin-right: 0px; 
-    margin-left: 0px;
-}
+
 .card{
     overflow: hidden;
     border: 0ch;
@@ -54,4 +50,19 @@ color:
     padding: 0 15px;
     line-height: 40px;
     height: 35px;
+}
+.container{
+    display: inline-block;
+}
+.card{
+    float: left;
+    height: auto;
+    width: auto; /* of wrapper width */
+}
+
+@media screen and (min-width: 361px) and (max-width: 481px) {
+    .card-img-top{
+        height: 15rem;
+       width: auto;
+       }
 }

@@ -11,6 +11,7 @@ export class PeliculasService {
 
   constructor(private http: HttpClient) {
     this.baseUrl = 'https://moviefind-app.herokuapp.com';
+    // this.baseUrl = 'http://localhost:3000';
   }
 
   getAll(): Promise<any[]> {

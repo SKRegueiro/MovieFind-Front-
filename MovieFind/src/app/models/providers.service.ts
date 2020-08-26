@@ -10,6 +10,7 @@ export class ProvidersService {
 
   constructor(private http: HttpClient) {
     this.baseUrl = 'https://moviefind-app.herokuapp.com';
+    // this.baseUrl = 'http://localhost:3000';
   }
 
   getProviders(): Promise<any[]> {

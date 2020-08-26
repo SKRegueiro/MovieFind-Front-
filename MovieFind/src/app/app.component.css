@@ -1,3 +1,4 @@
+
 /deep/ .autocomplete-container .input-container input {
     font-size: 14px;
     box-sizing: border-box;
@@ -16,7 +17,15 @@
     margin: 0%;
     background-color: #333;
     color: #ffffff;
+    height: 400px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
 }
+
+ .shrink {
+height: 300px;
+ }
+ 
 
 .display-1{
     font-weight: bold;
@@ -25,13 +34,14 @@
 .navbar{
     background-color: #333;
     height: 60px;
+    /* position: relative; */
 }
 
 #buscador{
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    width: 60%;
+    width: 50%;
     margin-left: 18% ;
     margin-right: 5px;
     }
@@ -57,8 +67,6 @@
     cursor: pointer;
 }
 
-
-
 .formulario{
     border-radius: 0.25rem;
     margin-right: 0em;
@@ -82,7 +90,6 @@
 
 .container{
     cursor: pointer;
-
 }
 
 .navbar-brand{

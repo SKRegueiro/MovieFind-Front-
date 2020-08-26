@@ -2,7 +2,6 @@
     <img [src]="this?.backdrops[this.posicion]" class="img-fluid w-100 fondo" alt="">
     <div class="colorFondo"></div>
     <div class="row">
-        <!-- justify-content-around -->
         <div class="card flotar mr-3 col-11 ml-5">
             <div class="card-body">
                 <div class="row">
@@ -37,13 +36,12 @@
 
                                     </div>
                                 </div>
-
+                                <header class="h6 m-1">
+                                    Dónde ver
+                                </header>
                                 <div id="tabla" class="table col-12 col-md-12 bordeTabla mt-3">
-                                    <header class="h6 m-1">
-                                        Dónde ver
-                                    </header>
-
                                     <div class="table-responsive ">
+
                                         <table>
                                             <td *ngFor="let provider of offers">
                                                 <div class="row">
@@ -78,6 +76,7 @@
                                             </h1>
                                         </table>
                                     </div>
+                                    <button>right</button>
                                 </div>
 
 
@@ -96,7 +95,12 @@
                         </li>
                     </ul>
                 </div> -->
+
+
                 <div class="table-responsive  bordeTabla mt-3 ">
+                    <header class="h6 m-1">
+                        Similares
+                    </header>
                     <table class="tabla justify-content-around">
                         <td *ngFor="let movie of this?.peliculasRecomendadas" class="p-3">
                             <img class="card-img-top " [src]=" movie?.poster" (click)="mostrarPelicula(movie?.id)"

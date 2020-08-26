@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../models/peliculas.service';
 import { ProvidersService } from '../models/providers.service';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { createNgModule } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-pelicula',
@@ -45,7 +45,6 @@ export class PeliculaComponent implements OnInit {
     this.peliculasRecomendadas = {};
     this.cambiarPosicion();
     this.getMovie();
-    this.getProviderLogo(2);
   }
 
   cambiarPosicion() {
@@ -57,17 +56,18 @@ export class PeliculaComponent implements OnInit {
 
   getMovie() {
     this.router.params.subscribe(params => {
+      console.log(params)
       this.pelicula.getById(params['movieId']).then(result => {
+        console.log(result[0])
         this.movie = result[0];
         this.loadInfo(this.movie)
       }).catch(err => console.log(err))
     })
   }
 
+  //this could use some cleaning
   loadInfo(movieObject) {
-    console.log(movieObject)
     this.seasons = eval(movieObject['seasons']);
-    console.log(this.seasons)
     if (this.offers != null) { this.offers = null }
     if (movieObject['scoring']) { this.scoring = eval(movieObject['scoring']); }
     // if (movieObject['credits']) { this.cast = eval(movieObject['credits']); }
@@ -82,12 +82,12 @@ export class PeliculaComponent implements OnInit {
 
     this.getProviders();
     if (movieObject['genre_ids']) { this.getReleatedMovies((movieObject['genre_ids'])) }
-    if (movieObject['genre_ids']) { this.getGenres(eval(movieObject['genre_ids'])); }
+    if (movieObject['genre_ids']) { this.getGenres(eval(movieObject['genre_ids'])) }
   }
 
   getProviders() {
     this.proveedorService.getProviders()
-      .then(result => this.providers = result)
+      .then(result => { this.providers = result })
       .catch(err => console.log(err))
   }
 
@@ -102,28 +102,25 @@ export class PeliculaComponent implements OnInit {
   }
 
   getGenres(genres: []) {
-    console.log(genres)
     this.genresArray = []
     genres.forEach(element => {
-      console.log(element)
       this.pelicula.getGenresById(element)
         .then(result => {
-          console.log(result)
           this.genresArray.push(result[0]['translation'])
         })
         .catch(err => console.log(err))
     });
-
   }
 
   mostrarPelicula(peliculaId) {
     this.httpRouter.navigate([`/pelicula/${peliculaId}`]);
   }
 
-
   getReleatedMovies(genreIds) {
     this.pelicula.getReleatedMovies(genreIds)
       .then(result => this.peliculasRecomendadas = result)
       .catch(err => console.log(err))
   }
+
+
 }

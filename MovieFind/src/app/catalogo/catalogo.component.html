@@ -1,7 +1,7 @@
-<div class="container d-flex mt-2">
+<div class="container d-flex mt-1">
     <div class="search-results" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
         (scrolled)="onScroll()">
-        <div class="card-deck row  justify-content-center flex-wrap">
+        <div class="row  justify-content-center ">
             <div class=" " *ngFor="let movie of this?.lastMovies">
                 <div class="card" *ngIf="movie.poster != null">
                     <img [src]="movie.poster" class="card-img-top" (click)="mostrarPelicula(movie.id)"
